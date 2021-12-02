@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="864.0" prefWidth="1300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hiltonhotel.Deletecontroller">
+    <children>
+        <AnchorPane layoutY="-5.0" prefHeight="184.0" prefWidth="1300.0" style="-fx-background-color: #008B8B;">
+            <children>
+                <Label layoutX="402.0" layoutY="44.0" prefHeight="90.0" prefWidth="514.0" text="DELETE RECORDS" textAlignment="CENTER" textFill="#f8f5f5">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                    <effect>
+                        <Bloom />
+                    </effect>
+                </Label>
+                <Line endX="145.0" layoutX="659.0" layoutY="136.0" startX="-263.0" stroke="#f8f5f5" />
+                <ImageView fitHeight="143.0" fitWidth="229.0" layoutX="29.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@guesti.jpg" />
+                    </image>
+                </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1086.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@d1.jpg" />
+               </image>
+            </ImageView>
+            </children></AnchorPane>
+      <Button layoutX="415.0" layoutY="498.0" mnemonicParsing="false" onAction="#delete" prefHeight="52.0" prefWidth="154.0" style="-fx-border-color: #008B8B;" text="DELETE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Label layoutX="415.0" layoutY="260.0" prefHeight="42.0" prefWidth="486.0" text="Enter Guest_id for Deleting their Records">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_gid" layoutX="509.0" layoutY="354.0" prefHeight="53.0" prefWidth="254.0" />
+      <Label fx:id="label" layoutX="424.0" layoutY="638.0" prefHeight="53.0" prefWidth="477.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="742.0" layoutY="498.0" mnemonicParsing="false" onAction="#gobck" prefHeight="53.0" prefWidth="266.0" style="-fx-border-color: #008B8B;" text="GO TO DASHBOARD">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
