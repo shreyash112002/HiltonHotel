@@ -155,4 +155,98 @@ public  class guestcontroller extends  NullPointerException implements Initializ
             stage.show();
         } catch(Exception ep) {
             ep.printStackTrace();
-        }}}
+        }
+    }
+    @FXML
+    protected void update(ActionEvent e)
+    {
+        String GGuest_id=tf_gid.getText();
+        String Firstname=tf_Fname.getText();
+        String Lastname=tf_Lname.getText();
+        String Email=tf_Email.getText();
+        String Address=tf_Add.getText();
+        String Age=tf_Age.getText();
+        String Phoneno=tf_Phone.getText();
+        String Adults=tf_adult.getText();
+        String Children=tf_child.getText();
+        String Roombooked=tf_norooms.getText();
+        LocalDate Checkin=tf_checkin.getValue();
+        LocalDate Checkout=tf_checkout.getValue();
+        String Roomty=checkbox.getValue();
+
+        if(GGuest_id.isBlank())
+        {
+            msg.setText("Enter Guest Id ");
+        }
+        else
+        {
+
+
+            DatabaseConnection connectnow = new DatabaseConnection();
+            Connection connectdb = connectnow.getconnection();
+            PreparedStatement pcheck=null;
+            PreparedStatement pupdate=null;
+            ResultSet rs=null;
+            try {
+                pcheck = connectdb.prepareStatement("Select * from guest_info1 where Guest_id=?");
+                pcheck.setString(1,GGuest_id);
+                rs=pcheck.executeQuery();
+                if(rs.isBeforeFirst())
+                {
+                    pupdate=connectdb.prepareStatement("update guest_info1 set First_name='" +Firstname+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info1 set Last_name='" +Lastname+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info1 set Age='" +Age+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info1 set Phoneno='" +Phoneno+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info1 set Address='" +Address+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info1 set Email='" +Email+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Adults='" +Adults+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Children='" +Children+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Roomtype='" +Roomty+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Roomsbooked='" +Roombooked+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Checkin='" +Checkin.toString()+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+                    pupdate=connectdb.prepareStatement("update guest_info2 set Checkout='" +Checkout.toString()+" 'where Guest_id= ?");
+                    pupdate.setString(1,GGuest_id);
+                    pupdate.executeUpdate();
+
+                    msg.setText("Updated Successfully..");
+
+                }
+                else
+                {
+                    Alert ep = new Alert(Alert.AlertType.ERROR);
+                    ep.setContentText("Guest does not exist...");
+                    ep.show();
+
+                }
+
+
+            }catch(SQLException ed)
+            {
+                ed.printStackTrace();
+            }
+        }
+
+    }
+}
