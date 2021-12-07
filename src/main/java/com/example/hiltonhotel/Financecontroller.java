@@ -148,17 +148,44 @@ public  class Financecontroller extends NullPointerException implements Initiali
         {
 
             Connection connectdb = null;
-            PreparedStatement psinsert =   connectdb.prepareStatement("Select * from guest_info1 where Guest_id=?");
+            PreparedStatement psinsert =   connectdb.prepareStatement("Select * from Finance where Guest_id=?");
             psinsert.setString(1,Guest_id);
             ResultSet rs=psinsert.executeQuery();
             if(rs.isBeforeFirst())
             {
-                
+                PreparedStatement pinsert = connectdb.prepareStatement("update Finance set Payment_mode='" + tf_mode + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set select='" + checkbox + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set Service_charges='" + tf_service + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set Laundry_charges='" + tf_laundry + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set Amount_payed='" + tf_payed + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set BRcharges='" + tf_dining + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                pinsert = connectdb.prepareStatement("update Finance set Payment_mode='" + tf_mode + " 'where Guest_id= ?");
+                pinsert.setString(1,Guest_id);
+                pinsert.executeUpdate();
+                msg.setText("Updated Successfully..");
+            }
+            else
+            {
+                Alert ep = new Alert(Alert.AlertType.ERROR);
+                ep.setContentText("Guest does not exist...");
+                ep.show();
             }
         }
         catch(SQLException ed)
         {
-
+            ed.printStackTrace();
         }
     }
 }
